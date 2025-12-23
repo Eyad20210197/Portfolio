@@ -1,0 +1,103 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model AdminUser {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  password_hash String
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+}
+
+model Project {
+  id                  String            @id @default(cuid())
+  slug                String            @unique
+  title               String
+  short_description   String
+  problem_statement   String
+  solution_summary    String
+  outcome             String
+  is_featured         Boolean           @default(false)
+  is_visible          Boolean           @default(true)
+  github_url          String?
+  live_demo_url       String?
+  created_at          DateTime          @default(now())
+  updated_at          DateTime          @updatedAt
+  case_study          CaseStudy?
+  technologies        ProjectTechnology[]
+}
+
+model CaseStudy {
+  id                   String   @id @default(cuid())
+  project_id           String   @unique
+  project              Project  @relation(fields: [project_id], references: [id])
+  architecture_overview String
+  technical_decisions  String
+  challenges           String
+  tradeoffs            String
+  future_improvements  String
+  created_at           DateTime @default(now())
+  updated_at           DateTime @updatedAt
+}
+
+model Technology {
+  id       String            @id @default(cuid())
+  name     String            @unique
+  category String
+  icon_url String?
+  projects ProjectTechnology[]
+}
+
+model ProjectTechnology {
+  project_id    String
+  project       Project    @relation(fields: [project_id], references: [id])
+  technology_id String
+  technology    Technology @relation(fields: [technology_id], references: [id])
+
+  @@id([project_id, technology_id])
+}
+
+model Skill {
+  id         String   @id @default(cuid())
+  name       String
+  category   String
+  level      String?
+  is_visible Boolean  @default(true)
+}
+
+model BlogPost {
+  id           String    @id @default(cuid())
+  slug         String    @unique
+  title        String
+  summary      String
+  content      String
+  is_published Boolean   @default(false)
+  published_at DateTime?
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+}
+
+model SiteConfig {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String
+}
+
+model ContentMetric {
+  id             String      @id @default(cuid())
+  entity_type    String
+  entity_id      String
+  view_count     Int         @default(0)
+  last_viewed_at DateTime?
+
+  @@unique([entity_type, entity_id])
+}
