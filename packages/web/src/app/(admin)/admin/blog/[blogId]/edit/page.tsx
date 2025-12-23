@@ -36,7 +36,7 @@ const EditBlogPostPage = ({ params }: { params: { blogId: string } }) => {
     // Ensure published_at is set if published
     const dataToUpdate = {
       ...post,
-      published_at: post.is_published && !post.published_at ? new Date().toISOString() : post.published_at,
+      published_at: post.is_published && !post.published_at ? new Date().toISOString() : (post.published_at ?? null),
     };
 
     try {
@@ -61,7 +61,7 @@ const EditBlogPostPage = ({ params }: { params: { blogId: string } }) => {
     setPost(prev => ({
       ...prev!,
       is_published: checked,
-      published_at: checked && !prev?.published_at ? new Date().toISOString() : prev?.published_at,
+      published_at: checked && !prev?.published_at ? new Date().toISOString() : (prev?.published_at ?? null),
     }));
   };
 
