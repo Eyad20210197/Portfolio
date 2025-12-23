@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import type { SiteConfig } from '@/lib/types'
+import type { SiteConfig } from '@/types'
 
 export default function DeleteConfirmModal({
   item,

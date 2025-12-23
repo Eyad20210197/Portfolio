@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import SiteConfigTable from '@/components/config/SiteConfigTable'
 import SiteConfigForm from '@/components/config/SiteConfigForm'
 import DeleteConfirmModal from '@/components/config/DeleteConfirmModal'
-import type { SiteConfig } from '@/lib/types'
+import type { SiteConfig } from '@/types'
 import {
   getAllSiteConfigAdmin,
   createSiteConfigAdmin,

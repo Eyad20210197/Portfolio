@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import type { SiteConfig } from '@/lib/types'
+import type { SiteConfig } from '@/types'
 
 type Props = {
   initial?: SiteConfig | null

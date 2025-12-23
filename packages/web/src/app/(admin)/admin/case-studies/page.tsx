@@ -25,7 +25,7 @@ const AdminCaseStudiesPage = () => {
         setProjects(prevProjects =>
           prevProjects.map(p =>
             p.case_study && p.case_study.id === caseStudyId
-              ? { ...p, case_study: undefined } // Remove case study from project
+              ? { ...p, case_study: null } // Remove case study from project
               : p
           )
         );

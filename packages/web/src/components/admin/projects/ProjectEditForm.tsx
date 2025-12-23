@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { updateProjectAdmin, getAllTechnologiesAdmin } from '@/lib/api'
-import { Project, Technology } from '@/lib/types'
+import { Project, Technology } from '@/types'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Label } from '@/components/ui/Label'
