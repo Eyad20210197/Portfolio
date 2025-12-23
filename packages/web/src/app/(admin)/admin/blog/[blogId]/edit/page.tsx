@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { getBlogPostByIdAdmin, updateBlogPostAdmin } from '@/lib/api';
-import { BlogPost } from '@/types';
+import { BlogPost } from '@/lib/types';
 import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
 import { Button } from '@/components/ui/Button';

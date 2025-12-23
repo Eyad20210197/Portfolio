@@ -7,7 +7,7 @@ export interface Technology {
 
 export interface CaseStudy {
   id: string
-  projectId: string
+  project_id: string
   architecture_overview: string
   technical_decisions: string
   challenges: string
