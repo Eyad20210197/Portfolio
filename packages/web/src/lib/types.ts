@@ -31,7 +31,7 @@ export interface Project {
   live_demo_url: string | null
   created_at: string
   updated_at: string
-  technologies: Technology[]
+  technologies: { technology: Technology }[]
   case_study: CaseStudy | null
 }
 

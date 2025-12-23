@@ -26,7 +26,7 @@ export async function getProjects(): Promise<Project[]> {
   return res.json();
 }
 
-export async function getProjectBySlug(slug: string): Promise<any> {
+export async function getProjectBySlug(slug: string): Promise<Project> {
   const res = await fetch(`${API_URL}/projects/${slug}`);
   if (!res.ok) {
     throw new Error("Failed to fetch project");
